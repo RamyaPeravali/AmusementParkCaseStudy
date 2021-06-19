@@ -3,6 +3,7 @@ package com.cg.mts.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,15 +18,14 @@ import com.cg.mts.dto.SuccessMessageDto;
 import com.cg.mts.entities.Admin;
 import com.cg.mts.util.AdminConstants;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/admin")
+//@RequestMapping("/admin")
 public class AdminController {
 
 	@Autowired
 	AdminServiceImp adminService;
-
 	
-
 	/*
 	 * Method Name : insertAdmin Parameter : admindto Return Type : Admin Author
 	 * Name: Aarthi Myadam Created Date : 23-05-2021

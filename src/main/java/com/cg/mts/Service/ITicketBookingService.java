@@ -6,6 +6,7 @@ import com.cg.mts.Exception.ActivityNotFoundException;
 import com.cg.mts.Exception.CustomerNotFoundException;
 import com.cg.mts.Exception.TicketBookingNotFoundException;
 import com.cg.mts.dto.TicketBookingDto;
+import com.cg.mts.entities.Customer;
 import com.cg.mts.entities.TicketBooking;
 
 public interface ITicketBookingService {
@@ -18,4 +19,6 @@ public interface ITicketBookingService {
 
 	public List<TicketBooking> viewAllTickets() throws TicketBookingNotFoundException;
 
+	public List<TicketBooking> viewAllTicketsCustomer(Customer id)
+			throws CustomerNotFoundException, TicketBookingNotFoundException;
 }

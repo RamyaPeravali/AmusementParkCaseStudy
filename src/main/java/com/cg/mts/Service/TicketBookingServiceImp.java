@@ -17,6 +17,7 @@ import com.cg.mts.dto.TicketBookingDto;
 import com.cg.mts.entities.Activity;
 import com.cg.mts.entities.Customer;
 import com.cg.mts.entities.TicketBooking;
+import com.cg.mts.util.CustomerConstants;
 import com.cg.mts.util.TicketBookingConstants;
 
 @Service
@@ -107,4 +108,12 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 		return ticketList;
 	}
 
+	@Override
+	public List<TicketBooking> viewAllTicketsCustomer(Customer customerId)
+			throws CustomerNotFoundException, TicketBookingNotFoundException {
+		List<TicketBooking> ticketList = ticketBookingRepository.findByCustomer(customerId);
+		if (ticketList.isEmpty())
+			throw new TicketBookingNotFoundException(CustomerConstants.CUSTOMER_NOT_FOUND);
+		return ticketList;
+	}
 }

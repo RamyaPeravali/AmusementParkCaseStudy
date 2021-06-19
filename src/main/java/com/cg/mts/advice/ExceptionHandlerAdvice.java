@@ -47,5 +47,5 @@ public class ExceptionHandlerAdvice {
 		else
 			return new ErrorMessageDto(TicketBookingConstants.INVALID_NUMBER, HttpStatus.BAD_REQUEST.toString());
 	}
-
+	
 }
