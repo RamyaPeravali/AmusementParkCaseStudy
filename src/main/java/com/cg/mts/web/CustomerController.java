@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +45,12 @@ public class CustomerController {
 	@GetMapping("/all")
 	public List<Customer> getCustomer() throws CustomerNotFoundException {
 		return customerService.viewCustomers();
+	}
+	
+	@GetMapping("/getcustomerbyid/{id}")
+	public Customer viewCustomerById(@PathVariable("id") Integer id) throws CustomerNotFoundException {
+
+		return customerService.viewCustomerById(id);
 	}
 
 	/*

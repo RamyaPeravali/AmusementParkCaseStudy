@@ -11,4 +11,5 @@ public class CustomerConstants {
 	public static final String CUSTOMER_EXISTS = "Customer is already present";
 	public static final String CUSTOMER_UPDATED = "Customer updated successfully ";
 	public static final String CUSTOMER_IS_EMPTY = "Customer list is empty";
+	public static final String CUSTOMER_INVALID_ID = "Customer ID is invalid";
 }

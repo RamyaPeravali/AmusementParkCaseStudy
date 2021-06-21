@@ -87,5 +87,15 @@ public class CustomerServiceImp implements ICustomerService {
 			throw new CustomerNotFoundException(CustomerConstants.CUSTOMER_IS_EMPTY);
 		return customerlist;
 	}
+	
+	@Override
+	public Customer viewCustomerById(Integer customerId) throws CustomerNotFoundException {
+		Optional<Customer> optcustomer = customerRepository.findById(customerId);
+		if (!optcustomer.isPresent()) {
+			throw new CustomerNotFoundException(CustomerConstants.CUSTOMER_INVALID_ID);
+
+		}
+		return optcustomer.get();
+	}
 
 }

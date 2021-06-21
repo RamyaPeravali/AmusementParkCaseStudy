@@ -13,4 +13,5 @@ public interface ICustomerService {
 
 	public List<Customer> viewCustomers() throws CustomerNotFoundException;
 
+	public Customer viewCustomerById(Integer customerId) throws CustomerNotFoundException;
 }
