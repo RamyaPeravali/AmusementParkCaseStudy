@@ -1,8 +1,10 @@
 package com.cg.mts.web;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.mts.Exception.ActivityNotFoundException;
@@ -26,7 +29,7 @@ import com.cg.mts.util.TicketBookingConstants;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/ticketbooking")
+// @RequestMapping("/ticketbooking")
 public class TicketBookingController {
 
 	@Autowired
@@ -70,4 +73,9 @@ public class TicketBookingController {
 		return ticketBookingServiceImp.viewAllTicketsCustomer(customerId);
 	}
 
+	/*@RequestMapping(value = "/date")
+	public List<TicketBooking> viewAllTicketsDate(@RequestParam("dateOfVisiting") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateOfVisiting) 
+			throws TicketBookingNotFoundException {
+		return ticketBookingServiceImp.viewAllTicketsDate(dateOfVisiting);
+	}*/
 }

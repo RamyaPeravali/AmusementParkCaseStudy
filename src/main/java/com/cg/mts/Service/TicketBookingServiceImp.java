@@ -47,7 +47,7 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 		if (!optActivity.isPresent())
 			throw new ActivityNotFoundException(TicketBookingConstants.ACTIVITY_NOT_FOUND);
 		TicketBooking ticketBooking = new TicketBooking();
-		ticketBooking.setDateOfVisiting(ticketBookingDto.getDateOfVisting());
+		ticketBooking.setDateOfVisiting(ticketBookingDto.getDateOfVisiting());
 		ticketBooking.setNumberOfTickets(ticketBookingDto.getNumberOfTickets());
 		ticketBooking.setBill(ticketBooking.getNumberOfTickets() * optActivity.get().getCharges());
 		ticketBooking.setDateOfBooking(LocalDate.now());
@@ -62,7 +62,7 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 	 * : boolean Author Name: P Ramya Sree Created Date : 28-05-2021
 	 */
 	public boolean validateTicketBooking(TicketBookingDto ticketBookingDto) throws TicketBookingNotFoundException {
-		if (ticketBookingDto.getDateOfVisting().isBefore(LocalDate.now()))
+		if (ticketBookingDto.getDateOfVisiting().isBefore(LocalDate.now()))
 			throw new TicketBookingNotFoundException(TicketBookingConstants.INVALID_DATE);
 		return true;
 	}
@@ -90,7 +90,7 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 		ticketBooking.setActivity(activity);
 		ticketBooking.setCustomer(customer);
 		ticketBooking.setDateOfBooking(LocalDate.now());
-		ticketBooking.setDateOfVisiting(ticketBookingDto.getDateOfVisting());
+		ticketBooking.setDateOfVisiting(ticketBookingDto.getDateOfVisiting());
 		ticketBooking.setNumberOfTickets(ticketBookingDto.getNumberOfTickets());
 		ticketBooking.setBill(ticketBooking.getNumberOfTickets() * optActivity.get().getCharges());
 		return ticketBookingRepository.save(ticketBooking);
@@ -116,4 +116,12 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 			throw new TicketBookingNotFoundException(CustomerConstants.CUSTOMER_NOT_FOUND);
 		return ticketList;
 	}
+	
+	/*@Override
+	public List<TicketBooking> viewAllTicketsDate(LocalDate dateOfVisiting) throws TicketBookingNotFoundException {
+		List<TicketBooking> ticketList = ticketBookingRepository.findByDateOfVisiting(dateOfVisiting);
+		if (ticketList.isEmpty())
+			throw new TicketBookingNotFoundException(TicketBookingConstants.TICKET_NOT_FOUND);
+		return ticketList;
+	}*/
 }

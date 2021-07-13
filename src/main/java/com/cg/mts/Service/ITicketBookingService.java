@@ -1,5 +1,6 @@
 package com.cg.mts.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.cg.mts.Exception.ActivityNotFoundException;
@@ -21,4 +22,6 @@ public interface ITicketBookingService {
 
 	public List<TicketBooking> viewAllTicketsCustomer(Customer id)
 			throws CustomerNotFoundException, TicketBookingNotFoundException;
+	
+	/*public List<TicketBooking> viewAllTicketsDate(LocalDate dateOfVisiting) throws TicketBookingNotFoundException;*/
 }

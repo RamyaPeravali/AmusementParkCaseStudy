@@ -21,7 +21,7 @@ import com.cg.mts.util.CustomerConstants;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/customer")
+// @RequestMapping("/customer")
 public class CustomerController {
 
 	@Autowired
