@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Customer extends AbstractUser {
 
 	private Integer customerId;
-	private String type = "Customer";
+	private String role = "Customer";
 
 	public Integer getCustomerId() {
 		return customerId;
@@ -16,12 +16,12 @@ public class Customer extends AbstractUser {
 		this.customerId = customerId;
 	}
 
-	public String getType() {
-		return type;
+	public String getRole() {
+		return role;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }

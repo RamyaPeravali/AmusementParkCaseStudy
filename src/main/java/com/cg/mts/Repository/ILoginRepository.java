@@ -5,8 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.cg.mts.entities.Login;
 
-
-
 /*
  * Created By Titas Sarkar
  */

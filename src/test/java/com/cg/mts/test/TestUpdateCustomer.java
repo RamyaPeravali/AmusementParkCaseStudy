@@ -37,7 +37,7 @@ public class TestUpdateCustomer {
 	@Test
 	public void testUpdateCustomer1() throws CustomerNotFoundException {
 		CustomerDto dto = new CustomerDto(1, "jyothsna", "jyothsna@13", "7893403126", "jyothsna@gmail.com",
-				"hyderabad");
+				"hyderabad","Customer");
 
 		assertNotNull(customerService.updateCustomer(dto));
 
@@ -45,7 +45,7 @@ public class TestUpdateCustomer {
 
 	@Test
 	public void testUpdateCustomer2() throws CustomerNotFoundException {
-		CustomerDto dto = new CustomerDto(2, "jyothsna", "jyothsna@13", " ", "jyothsna@gmail.com", "hyderabad");
+		CustomerDto dto = new CustomerDto(2, "jyothsna", "jyothsna@13", " ", "jyothsna@gmail.com", "hyderabad","Customer");
 		assertThrows(CustomerNotFoundException.class, () -> customerService.updateCustomer(dto));
 
 	}

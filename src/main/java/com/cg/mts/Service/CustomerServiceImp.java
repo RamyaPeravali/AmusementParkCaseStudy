@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.cg.mts.Exception.CustomerNotFoundException;
 import com.cg.mts.Repository.ICustomerRepository;
+import com.cg.mts.Repository.ILoginRepository;
 import com.cg.mts.dto.CustomerDto;
 import com.cg.mts.entities.Customer;
+import com.cg.mts.entities.Login;
 import com.cg.mts.util.CustomerConstants;
 import com.cg.mts.util.ValidateConstants;
 
@@ -17,7 +19,10 @@ public class CustomerServiceImp implements ICustomerService {
 
 	@Autowired
 	ICustomerRepository customerRepository;
-
+	
+	@Autowired
+	ILoginRepository loginRepository;
+	
 	/*
 	 * Method Name : validateCustomer Parameter : customerDto Return Type : boolean
 	 * Author Name: Jyothsna G Created Date : 28-05-2021
@@ -40,19 +45,25 @@ public class CustomerServiceImp implements ICustomerService {
 
 	@Override
 	public Customer insertCustomer(CustomerDto customerDto) throws CustomerNotFoundException {
+		validateCustomer(customerDto);
 		Customer cust = new Customer();
 		Optional<Customer> findById = customerRepository.findById(customerDto.getCustomerId());
 		if (findById.isPresent())
 			throw new CustomerNotFoundException(CustomerConstants.CUSTOMER_EXISTS);
-
 		cust.setCustomerId(customerDto.getCustomerId());
 		cust.setUsername(customerDto.getUsername());
 		cust.setPassword(customerDto.getPassword());
 		cust.setMobileNumber(customerDto.getMobileNumber());
 		cust.setEmail(customerDto.getEmail());
 		cust.setAddress(customerDto.getAddress());
-		validateCustomer(customerDto);
-		return customerRepository.save(cust);
+		Login login = new Login();
+		login.setPassword(customerDto.getPassword());
+		login.setUserName(customerDto.getUsername());
+		login.setRole(customerDto.getRole());
+		Customer customer1 = customerRepository.save(cust);
+		login.setUserId(customer1.getCustomerId());
+		loginRepository.save(login);
+		return customer1;
 	}
 
 	/*
@@ -72,6 +83,7 @@ public class CustomerServiceImp implements ICustomerService {
 		customer.setMobileNumber(customerDto.getMobileNumber());
 		customer.setEmail(customerDto.getEmail());
 		customer.setAddress(customerDto.getAddress());
+		customer.setRole(customerDto.getRole());
 		return customerRepository.save(customer);
 
 	}

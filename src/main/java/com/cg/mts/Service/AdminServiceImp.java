@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.cg.mts.Exception.AdminNotFoundException;
 import com.cg.mts.Repository.IAdminRepository;
+import com.cg.mts.Repository.ILoginRepository;
 import com.cg.mts.dto.AdminDto;
 import com.cg.mts.entities.Admin;
+import com.cg.mts.entities.Login;
 import com.cg.mts.util.AdminConstants;
 import com.cg.mts.util.ValidateConstants;
 
@@ -19,6 +21,9 @@ public class AdminServiceImp implements IAdminService {
 	@Autowired
 	IAdminRepository adminRepository;
 
+	@Autowired
+	ILoginRepository loginRepository;
+	
 	/*
 	 * Method Name : insertAdmin Parameter : admindto Return Type : Admin Author
 	 * Name: Aarthi Myadam Created Date : 23-05-2021
@@ -33,8 +38,14 @@ public class AdminServiceImp implements IAdminService {
 		admin.setMobileNumber(adminDto.getMobileNumber());
 		admin.setEmail(adminDto.getEmail());
 		admin.setAddress(adminDto.getAddress());
-
-		return adminRepository.save(admin);
+		Login login = new Login();
+		login.setPassword(adminDto.getPassword());
+		login.setUserName(adminDto.getUsername());
+		login.setRole(adminDto.getRole());
+		Admin admin1 = adminRepository.save(admin);
+		login.setUserId(admin1.getAdminId());
+		loginRepository.save(login);
+		return admin1;
 
 	}
 
@@ -55,6 +66,7 @@ public class AdminServiceImp implements IAdminService {
 		admin.setMobileNumber(adminDto.getMobileNumber());
 		admin.setEmail(adminDto.getEmail());
 		admin.setAddress(adminDto.getAddress());
+		admin.setRole(adminDto.getRole());
 		return adminRepository.save(admin);
 
 	}

@@ -7,13 +7,19 @@ public class CustomerDto {
 	private String mobileNumber;
 	private String email;
 	private String address;
-
+	private String role = "Customer";
+	
 	public CustomerDto() {
 		super();
 	}
 
+	public CustomerDto(Integer customerId) {
+		super();
+		this.customerId = customerId;
+	}
+
 	public CustomerDto(Integer customerId, String username, String password, String mobileNumber, String email,
-			String address) {
+			String address, String role) {
 		super();
 		this.customerId = customerId;
 		this.username = username;
@@ -21,11 +27,15 @@ public class CustomerDto {
 		this.mobileNumber = mobileNumber;
 		this.email = email;
 		this.address = address;
+		this.role = role;
 	}
 
-	public CustomerDto(Integer customerId) {
-		super();
-		this.customerId = customerId;
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public Integer getCustomerId() {

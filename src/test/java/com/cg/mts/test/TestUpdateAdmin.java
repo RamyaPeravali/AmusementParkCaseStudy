@@ -36,7 +36,7 @@ public class TestUpdateAdmin {
 
 	@Test
 	public void testUpdateAdmin1() throws AdminNotFoundException {
-		AdminDto dto = new AdminDto(1, "jyothsna", "jyothsna@13", "7893403126", "jyothsna@gmail.com", "hyderabad");
+		AdminDto dto = new AdminDto(1, "jyothsna", "jyothsna@13", "7893403126", "jyothsna@gmail.com", "hyderabad","Admin");
 
 		assertNotNull(adminService.updateAdmin(dto));
 
@@ -44,7 +44,7 @@ public class TestUpdateAdmin {
 
 	@Test
 	public void testUpdateAdmin2() throws AdminNotFoundException {
-		AdminDto dto = new AdminDto(2, "jyothsna", "jyothsna@13", " ", "jyothsna@gmail.com", "hyderabad");
+		AdminDto dto = new AdminDto(2, "jyothsna", "jyothsna@13", " ", "jyothsna@gmail.com", "hyderabad","Admin");
 		assertThrows(AdminNotFoundException.class, () -> adminService.updateAdmin(dto));
 
 	}

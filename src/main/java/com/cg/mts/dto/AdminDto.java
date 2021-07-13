@@ -7,6 +7,7 @@ public class AdminDto {
 	private String mobileNumber;
 	private String email;
 	private String address;
+	private String role = "Admin";
 
 	public AdminDto() {
 		super();
@@ -17,6 +18,18 @@ public class AdminDto {
 		this.adminId = adminId;
 	}
 
+	public AdminDto(Integer adminId, String username, String password, String mobileNumber, String email,
+			String address, String role) {
+		super();
+		this.adminId = adminId;
+		this.username = username;
+		this.password = password;
+		this.mobileNumber = mobileNumber;
+		this.email = email;
+		this.address = address;
+		this.role = role;
+	}
+	
 	public String getAddress() {
 		return address;
 	}
@@ -25,15 +38,12 @@ public class AdminDto {
 		this.address = address;
 	}
 
-	public AdminDto(Integer adminId, String username, String password, String mobileNumber, String email,
-			String address) {
-		super();
-		this.adminId = adminId;
-		this.username = username;
-		this.password = password;
-		this.mobileNumber = mobileNumber;
-		this.email = email;
-		this.address = address;
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public Integer getAdminId() {
