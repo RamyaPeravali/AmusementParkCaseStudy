@@ -6,7 +6,7 @@ public class TicketBookingDto {
 
 	private Integer ticketBookingId;
 	private Integer activityId;
-	private Integer customerId;
+	private Integer userId;
 	private LocalDate dateOfVisiting;
 	private Integer numberOfTickets;
 
@@ -14,12 +14,12 @@ public class TicketBookingDto {
 		super();
 	}
 
-	public TicketBookingDto(Integer ticketBookingId, Integer activityId, Integer customerId, LocalDate dateOfVisiting,
+	public TicketBookingDto(Integer ticketBookingId, Integer activityId, Integer userId, LocalDate dateOfVisiting,
 			Integer numberOfTickets) {
 		super();
 		this.ticketBookingId = ticketBookingId;
 		this.activityId = activityId;
-		this.customerId = customerId;
+		this.userId = userId;
 		this.dateOfVisiting = dateOfVisiting;
 		this.numberOfTickets = numberOfTickets;
 	}
@@ -32,12 +32,12 @@ public class TicketBookingDto {
 		this.activityId = activityId;
 	}
 
-	public Integer getCustomerId() {
-		return customerId;
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public void setCustomerId(Integer customerId) {
-		this.customerId = customerId;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	public LocalDate getDateOfVisiting() {

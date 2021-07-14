@@ -1,33 +1,33 @@
 package com.cg.mts.dto;
 
 public class CustomerDto {
-	private Integer customerId;
 	private String username;
 	private String password;
 	private String mobileNumber;
 	private String email;
 	private String address;
 	private String role = "Customer";
+	private Integer userId;
 	
 	public CustomerDto() {
 		super();
 	}
 
-	public CustomerDto(Integer customerId) {
+	public CustomerDto(Integer userId) {
 		super();
-		this.customerId = customerId;
+		this.userId = userId;
 	}
 
-	public CustomerDto(Integer customerId, String username, String password, String mobileNumber, String email,
-			String address, String role) {
+	public CustomerDto(String username, String password, String mobileNumber, String email, String address, String role,
+			Integer userId) {
 		super();
-		this.customerId = customerId;
 		this.username = username;
 		this.password = password;
 		this.mobileNumber = mobileNumber;
 		this.email = email;
 		this.address = address;
 		this.role = role;
+		this.userId = userId;
 	}
 
 	public String getRole() {
@@ -36,14 +36,6 @@ public class CustomerDto {
 
 	public void setRole(String role) {
 		this.role = role;
-	}
-
-	public Integer getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(Integer customerId) {
-		this.customerId = customerId;
 	}
 
 	public String getUsername() {
@@ -84,6 +76,14 @@ public class CustomerDto {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 }

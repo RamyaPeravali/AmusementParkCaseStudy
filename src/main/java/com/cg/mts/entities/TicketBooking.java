@@ -38,7 +38,7 @@ public class TicketBooking {
 	private LocalDate dateOfBooking;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "customerId")
+	@JoinColumn(name = "userId")
 	private Customer customer;
 
 	public Integer getTicketBookingId() {

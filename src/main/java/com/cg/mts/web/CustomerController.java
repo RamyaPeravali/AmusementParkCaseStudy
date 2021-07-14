@@ -35,7 +35,7 @@ public class CustomerController {
 	@RequestMapping(value = "addcustomer", method = RequestMethod.POST)
 	public SuccessMessageDto insertCustomer(@RequestBody CustomerDto customerDto) throws CustomerNotFoundException {
 		Customer customer = customerService.insertCustomer(customerDto);
-		return new SuccessMessageDto(CustomerConstants.CUSTOMER_ADDED + customer.getCustomerId());
+		return new SuccessMessageDto(CustomerConstants.CUSTOMER_ADDED + customer.getUserId());
 	}
 
 	/*
@@ -47,10 +47,10 @@ public class CustomerController {
 		return customerService.viewCustomers();
 	}
 	
-	@GetMapping("/getcustomerbyid/{id}")
-	public Customer viewCustomerById(@PathVariable("id") Integer id) throws CustomerNotFoundException {
+	@GetMapping("/findById/{userId}")
+	public Customer viewCustomerById(@PathVariable Integer userId) throws CustomerNotFoundException {
 
-		return customerService.viewCustomerById(id);
+		return customerService.viewCustomerById(userId);
 	}
 
 	/*
@@ -61,7 +61,7 @@ public class CustomerController {
 	public SuccessMessageDto updateCustomer(@RequestBody CustomerDto customerDto) throws CustomerNotFoundException {
 		Customer customer = customerService.updateCustomer(customerDto);
 
-		return new SuccessMessageDto(CustomerConstants.CUSTOMER_UPDATED + customer.getCustomerId());
+		return new SuccessMessageDto(CustomerConstants.CUSTOMER_UPDATED + customer.getUserId());
 	}
 
 }

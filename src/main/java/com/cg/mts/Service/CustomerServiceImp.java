@@ -47,10 +47,10 @@ public class CustomerServiceImp implements ICustomerService {
 	public Customer insertCustomer(CustomerDto customerDto) throws CustomerNotFoundException {
 		validateCustomer(customerDto);
 		Customer cust = new Customer();
-		Optional<Customer> findById = customerRepository.findById(customerDto.getCustomerId());
+		Optional<Customer> findById = customerRepository.findById(customerDto.getUserId());
 		if (findById.isPresent())
 			throw new CustomerNotFoundException(CustomerConstants.CUSTOMER_EXISTS);
-		cust.setCustomerId(customerDto.getCustomerId());
+		cust.setUserId(customerDto.getUserId());
 		cust.setUsername(customerDto.getUsername());
 		cust.setPassword(customerDto.getPassword());
 		cust.setMobileNumber(customerDto.getMobileNumber());
@@ -61,7 +61,7 @@ public class CustomerServiceImp implements ICustomerService {
 		login.setUserName(customerDto.getUsername());
 		login.setRole(customerDto.getRole());
 		Customer customer1 = customerRepository.save(cust);
-		login.setUserId(customer1.getCustomerId());
+		login.setUserId(customer1.getUserId());
 		loginRepository.save(login);
 		return customer1;
 	}
@@ -72,12 +72,12 @@ public class CustomerServiceImp implements ICustomerService {
 	 */
 	@Override
 	public Customer updateCustomer(CustomerDto customerDto) throws CustomerNotFoundException {
-		Optional<Customer> optCustomer = customerRepository.findById(customerDto.getCustomerId());
+		Optional<Customer> optCustomer = customerRepository.findById(customerDto.getUserId());
 
 		if (!optCustomer.isPresent())
 			throw new CustomerNotFoundException(CustomerConstants.CUSTOMER_NOT_FOUND);
 		Customer customer = optCustomer.get();
-		customer.setCustomerId(customerDto.getCustomerId());
+		customer.setUserId(customerDto.getUserId());
 		customer.setUsername(customerDto.getUsername());
 		customer.setPassword(customerDto.getPassword());
 		customer.setMobileNumber(customerDto.getMobileNumber());
@@ -101,8 +101,8 @@ public class CustomerServiceImp implements ICustomerService {
 	}
 	
 	@Override
-	public Customer viewCustomerById(Integer customerId) throws CustomerNotFoundException {
-		Optional<Customer> optcustomer = customerRepository.findById(customerId);
+	public Customer viewCustomerById(Integer userId) throws CustomerNotFoundException {
+		Optional<Customer> optcustomer = customerRepository.findById(userId);
 		if (!optcustomer.isPresent()) {
 			throw new CustomerNotFoundException(CustomerConstants.CUSTOMER_INVALID_ID);
 

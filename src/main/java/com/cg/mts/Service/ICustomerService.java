@@ -12,6 +12,6 @@ public interface ICustomerService {
 	public Customer updateCustomer(CustomerDto customerDto) throws CustomerNotFoundException;
 
 	public List<Customer> viewCustomers() throws CustomerNotFoundException;
-
-	public Customer viewCustomerById(Integer customerId) throws CustomerNotFoundException;
+	
+	public Customer viewCustomerById(Integer userId) throws CustomerNotFoundException;
 }

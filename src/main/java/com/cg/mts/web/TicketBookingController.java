@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.mts.Exception.ActivityNotFoundException;
@@ -67,10 +66,10 @@ public class TicketBookingController {
 		return new SuccessMessageDto(TicketBookingConstants.TICKET_UPDATED + ticketBooking.getTicketBookingId());
 	}
 
-	@RequestMapping(value = "/customer/{customerId}")
-	public List<TicketBooking> viewAllTicketsCustomer(@PathVariable("customerId") Customer customerId)
+	@RequestMapping(value = "/customer/{userId}")
+	public List<TicketBooking> viewAllTicketsCustomer(@PathVariable("customerId") Customer userId)
 			throws CustomerNotFoundException, TicketBookingNotFoundException {
-		return ticketBookingServiceImp.viewAllTicketsCustomer(customerId);
+		return ticketBookingServiceImp.viewAllTicketsCustomer(userId);
 	}
 
 	@RequestMapping(value = "/viewticketsbydate/{dateOfVisiting}")

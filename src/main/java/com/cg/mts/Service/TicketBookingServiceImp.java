@@ -40,7 +40,7 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 	public TicketBooking bookTicket(TicketBookingDto ticketBookingDto)
 			throws CustomerNotFoundException, ActivityNotFoundException, TicketBookingNotFoundException {
 		validateTicketBooking(ticketBookingDto);
-		Optional<Customer> optCustomer = customerRepo.findById(ticketBookingDto.getCustomerId());
+		Optional<Customer> optCustomer = customerRepo.findById(ticketBookingDto.getUserId());
 		if (!optCustomer.isPresent())
 			throw new CustomerNotFoundException(TicketBookingConstants.CUSTOMER_NOT_FOUND);
 		Optional<Activity> optActivity = activityRepo.findById(ticketBookingDto.getActivityId());
@@ -78,7 +78,7 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 		Optional<TicketBooking> optTicket = ticketBookingRepository.findById(ticketBookingDto.getTicketBookingId());
 		if (!optTicket.isPresent())
 			throw new TicketBookingNotFoundException(TicketBookingConstants.TICKET_NOT_FOUND);
-		Optional<Customer> optCustomer = customerRepo.findById(ticketBookingDto.getCustomerId());
+		Optional<Customer> optCustomer = customerRepo.findById(ticketBookingDto.getUserId());
 		if (!optCustomer.isPresent())
 			throw new CustomerNotFoundException(TicketBookingConstants.CUSTOMER_NOT_FOUND);
 		Optional<Activity> optActivity = activityRepo.findById(ticketBookingDto.getActivityId());
@@ -109,9 +109,9 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 	}
 
 	@Override
-	public List<TicketBooking> viewAllTicketsCustomer(Customer customerId)
+	public List<TicketBooking> viewAllTicketsCustomer(Customer userId)
 			throws CustomerNotFoundException, TicketBookingNotFoundException {
-		List<TicketBooking> ticketList = ticketBookingRepository.findByCustomer(customerId);
+		List<TicketBooking> ticketList = ticketBookingRepository.findByCustomer(userId);
 		if (ticketList.isEmpty())
 			throw new TicketBookingNotFoundException(CustomerConstants.CUSTOMER_NOT_FOUND);
 		return ticketList;
