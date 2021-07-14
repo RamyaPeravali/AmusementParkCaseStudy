@@ -13,6 +13,6 @@ import com.cg.mts.entities.TicketBooking;
 public interface ITicketBookingRepository extends JpaRepository<TicketBooking, Integer> {
 
 	public List<TicketBooking> findByCustomer(Customer customerId);
-/*	public List<TicketBooking> findByDateOfVisiting(LocalDate dateOfVisiting);*/
+	public List<TicketBooking> findByDateOfVisiting(LocalDate dateOfVisiting);
 	
 }

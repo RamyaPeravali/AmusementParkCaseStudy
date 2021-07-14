@@ -117,11 +117,11 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 		return ticketList;
 	}
 	
-	/*@Override
+	@Override
 	public List<TicketBooking> viewAllTicketsDate(LocalDate dateOfVisiting) throws TicketBookingNotFoundException {
 		List<TicketBooking> ticketList = ticketBookingRepository.findByDateOfVisiting(dateOfVisiting);
 		if (ticketList.isEmpty())
 			throw new TicketBookingNotFoundException(TicketBookingConstants.TICKET_NOT_FOUND);
 		return ticketList;
-	}*/
+	}
 }

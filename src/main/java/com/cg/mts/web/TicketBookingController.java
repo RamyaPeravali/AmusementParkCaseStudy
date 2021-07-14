@@ -73,9 +73,10 @@ public class TicketBookingController {
 		return ticketBookingServiceImp.viewAllTicketsCustomer(customerId);
 	}
 
-	/*@RequestMapping(value = "/date")
-	public List<TicketBooking> viewAllTicketsDate(@RequestParam("dateOfVisiting") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateOfVisiting) 
+	@RequestMapping(value = "/viewticketsbydate/{dateOfVisiting}")
+	public List<TicketBooking> viewAllTicketsDate(@PathVariable("dateOfVisiting") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateOfVisiting) 
 			throws TicketBookingNotFoundException {
 		return ticketBookingServiceImp.viewAllTicketsDate(dateOfVisiting);
-	}*/
+	}
+	
 }
