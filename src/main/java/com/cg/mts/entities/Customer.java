@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Customer extends AbstractUser {
 
-	private String role = "Customer";
+	private String role = "customer";
 
 	public String getRole() {
 		return role;

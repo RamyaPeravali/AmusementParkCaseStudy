@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 public class Admin extends AbstractUser {
 
 	private Integer adminId;
-	private String role = "Admin";
+	private String role = "admin";
 
 	public Integer getAdminId() {
 		return adminId;

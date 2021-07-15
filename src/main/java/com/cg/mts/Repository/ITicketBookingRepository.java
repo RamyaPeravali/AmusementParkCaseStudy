@@ -14,5 +14,6 @@ public interface ITicketBookingRepository extends JpaRepository<TicketBooking, I
 
 	public List<TicketBooking> findByCustomer(Customer userId);
 	public List<TicketBooking> findByDateOfVisiting(LocalDate dateOfVisiting);
+	public List<TicketBooking> findByCustomer(Integer userId);
 	
 }

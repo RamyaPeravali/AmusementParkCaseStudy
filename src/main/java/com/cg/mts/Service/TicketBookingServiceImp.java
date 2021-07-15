@@ -118,6 +118,15 @@ public class TicketBookingServiceImp implements ITicketBookingService {
 	}
 	
 	@Override
+	public List<TicketBooking> viewAllTicketsCustomer(Integer userId)
+			throws TicketBookingNotFoundException {
+		List<TicketBooking> ticketList = ticketBookingRepository.findByCustomer(userId);
+		if (ticketList.isEmpty())
+			throw new TicketBookingNotFoundException(CustomerConstants.CUSTOMER_NOT_FOUND);
+		return ticketList;
+	}
+	
+	@Override
 	public List<TicketBooking> viewAllTicketsDate(LocalDate dateOfVisiting) throws TicketBookingNotFoundException {
 		List<TicketBooking> ticketList = ticketBookingRepository.findByDateOfVisiting(dateOfVisiting);
 		if (ticketList.isEmpty())

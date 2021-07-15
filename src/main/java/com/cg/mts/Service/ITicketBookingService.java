@@ -19,9 +19,11 @@ public interface ITicketBookingService {
 			throws CustomerNotFoundException, ActivityNotFoundException, TicketBookingNotFoundException;
 
 	public List<TicketBooking> viewAllTickets() throws TicketBookingNotFoundException;
-
-	public List<TicketBooking> viewAllTicketsCustomer(Customer id)
+	
+	public List<TicketBooking> viewAllTicketsCustomer(Customer userId)
 			throws CustomerNotFoundException, TicketBookingNotFoundException;
+
+	public List<TicketBooking> viewAllTicketsCustomer(Integer userId) throws TicketBookingNotFoundException;
 	
 	public List<TicketBooking> viewAllTicketsDate(LocalDate dateOfVisiting) throws TicketBookingNotFoundException;
 }
