@@ -2,7 +2,7 @@ package com.cg.mts.util;
 
 public class CustomerConstants {
 	public static final String CUSTOMER_NOT_FOUND = "Customer not found";
-	public static final String CUSTOMER_ADDED = "Customer Details Added Sucessfully ";
+	public static final String CUSTOMER_ADDED = "Customer Details Added Sucessfully. Please note your ID for login ";
 	public static final String USEREMAIL_CANNOT_BE_EMPTY = "Enter a valid User-Email Example: example@example.com";
 	public static final String PASSWORD_NOT_STRONG = "Password should contain atleast one uppercase alphatbet, one lowercase alphabet, one digit, one special character. Min size:8, Max Size:32";
 	public static final String CUSTOMER_CANNOT_BE_EMPTY = "Customer cannot be empty";
